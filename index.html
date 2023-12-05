@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        /* Basic Styling for the scroll down box*/
+        #scrollDownArrow {
+            position:static;
+            bottom: 25px;
+            font-size: 50px;
+            cursor: pointer;
+            background-color: lavender;
+        }
+    </style>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<!--THIS IS THE FORM -->
+<!--THIS FORM WILL LET USERS INTERACT WITH IT-->
+<!--AND HENCE ALLOW THEM TO ENTER THEIR DETAILS IN ORDER TO GENERATE A CV-->
+
+    <div class="container" id="cv-form">
+
+        <h1 class="text-center my-1"><b>Resume Generator</b></h1> 
+        <p class="text-center"><b>By Runtime Terror</b></p>
+
+
+        <div class="container mt-1">
+            <div class="container"><p><b>A few Sample Resumes : </b></p></div>
+            <div class="row align-content-center text-center">
+
+                
+<!--Here I am gonna add two basic template snapshots-->        
+                <div class="col-md-3 text-center py-5 background m-4 border1">
+                    <img src="mport.jpg" class="img-fluid mb-3">
+                </div>
+        
+                <div class="col-md-3 text-center py-5 background m-4 border1">
+                    <img src="mport1.jpg" class="img-fluid mb-3">
+                </div>
+
+                <div class="col-md-3 text-center py-5 background m-4 border1">
+                    <img src="mport2.jpg" class="img-fluid mb-3">
+                </div>
+
+
+                <div id="scrollDownArrow" onclick="scrollDown()">
+                    <div class="container  border1">Click to try it out &#9660;</div>
+                    
+        
+            </div>
+        
+        </div>
+        
+<!--Below this are the input fields-->
+
+        <div class="row">
+            <div class="col-md-6">
+                <!--First Column-->
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="namefield">Your Name:</label>
+                    <input type="text" class="form-control" placeholder="John" id="namefield">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="contactfield">Your Name:</label>
+                    <input type="text" class="form-control" placeholder="+123-567890" id="contactfield">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="addressfield">Your Name:</label>
+                    <textarea rows="6" class="form-control" placeholder="#40,BunkerStreet" id="addressfield"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="">Select your profile picture</label>
+                    <input id="imagefield" type="file" class="form-control mt-3">
+                </div>
+
+                <p class="my-2">Important Links</p>
+                <div class="form-group">
+                    <label for="Instafield">Instagram:</label>
+                    <input type="text" class="form-control" placeholder="URL of your instagram profile" id="Instafield">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="FBfield">Facebook:</label>
+                    <input type="text" class="form-control" placeholder="URL of your Facebook profile" id="FBfield">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="LDfield">LinkedIn:</label>
+                    <input type="text" class="form-control" placeholder="URL of your LinkedIn profile" id="LDfield">
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+            <div class="col-md-6">
+                <!--Second Column-->
+                <h3>Professional Information</h3>
+
+                <div class="form-group">
+                    <label for="">Objectives:</label>
+                    <textarea rows="2" class="form-control" placeholder="" id="objectivefield"></textarea>
+
+                </div>
+
+                <div class="form-group mt-2" id="we">
+                    <label for="">Work Experience:</label>
+                    <textarea rows="2" class="form-control wefield" placeholder="" ></textarea>
+
+                    <!--Next text area-->
+                    <div class="container text-center mt-3" id="weaddbutton">
+                        <button onclick="addnewwefield()" class="btn btn-primary btn-sm">Add</button>
+    
+                    </div>
+
+                </div>
+
+                
+
+
+                <div class="form-group mt-2" id="aq">
+                    <label for="">Academic Qualifications:</label>
+                    <textarea rows="2" class="form-control aqfield" placeholder="" ></textarea>
+
+                    <!--New Text Area-->
+
+                    <div class="container text-center mt-3" id="aqaddbutton">
+                        <button onclick="addnewaqfield()" class="btn btn-primary btn-sm">Add</button>
+    
+                    </div>
+
+                </div>
+
+
+                <div class="form-group mt-2" id="sk">
+                    <label for="">Skills/Certifications:</label>
+                    <textarea rows="2" class="form-control skfield" placeholder="" ></textarea>
+
+                    <div class="container text-center mt-3" id="skaddbutton">
+                        <button onclick="addnewskfield()" class="btn btn-primary btn-sm">Add</button>
+    
+                    </div>
+
+                </div>
+
+
+
+
+                
+
+
+
+
+
+        </div>
+
+        
+
+
+
+
+    </div>
+
+    <!--This marks the end of the input fields-->
+
+    <div class="container text-center mt-2">
+        <button onclick="generatecv()" class="btn btn-primary btn-lg"> Generate </button>
+
+    </div>
+
+
+    <p class=" mt-2">
+        Your Resume Will be generated dynamically in real time. As and when you enter your details in the fields above and click on <b>Generate</b> , your details will be embedded to the below sample resume body. 
+    </p>
+
+    </div>
+
+    </div>
+
+
+
+
+
+<!--THIS IS THE CV TEMPLATE-->
+<!--DATA FROM THE USER WILL BE COLLECTED THROUGH THE FORM AND LINKED HERE IN THE TEMPLATE-->
+
+    <div class="container mt-4 mb-4 bg " id="cv-template">
+
+        <div class="row">
+
+
+            <div class="col-md-5 text-center py-5 background">
+                <!--first column-->
+                <img src="https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?size=626&ext=jpg&ga=GA1.1.1803636316.1701302400&semt=ais"
+
+                class="img-fluid myimage mb-3" id="imagetemplate">
+
+                <div class="container border1">
+                    <p id="namet1">Your Name</p>
+                    <p id="contactt">Your Contact Info</p>
+                    <p id="addresst">Your Address</p>
+                    <hr>
+
+                    <!--Need to figure out a way to dynamically change content in href attribute as and when the content in p changes-->
+                    <h4>Important Social Handles</h4>
+                    <p id="fbt" class="blue"><a href=""></a></p>
+                    <p id="instat" class="blue"><a href=""></a></p>
+                    <p id="linkedint" class="blue"><a href=""></a></p>
+
+                </div>
+
+
+            </div> <!--This is left part of the screen-->
+
+
+            <div class="col-md-7">
+                <!--second column-->
+                <h1 id="namet2" class="text-center" style="font-weight: 980;">Your Name</h1>
+
+                <!--This is an objective card-->
+                <div class="card mt-2 background border-black">
+                    <div class="card-header border-black">
+                        <h3>Objective</h3>
+                    </div>
+                    <div class="card-body border-black">
+                        <p id="objectivet"></p>
+                    </div>
+                </div>
+
+                <!--This is work experience card-->
+                <div class="card mt-2 background border-black">
+                    <div class="card-header border-black">
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div class="card-body border-black">
+                        <ul id="wet">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+
+                <!--This is for academic qualifications-->
+                <div class="card mt-2 background border-black">
+                    <div class="card-header border-black">
+                        <h3>Academic Qualifications</h3>
+                    </div>
+                    <div class="card-body border-black">
+                        <ul id="aqt">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                <!--This is for skills and other certifications-->
+                <div class="card mt-2 background border-black">
+                    <div class="card-header border-black">
+                        <h3>Skills / Qualifications</h3>
+                    </div>
+                    <div class="card-body border-black">
+                        <ul id="skt">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container mt-3 text-center">
+                    <button onclick="printcv()" class="btn btn-primary btn-lg mb-2">
+
+                        Save / Print
+
+                    </button>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    
+    
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

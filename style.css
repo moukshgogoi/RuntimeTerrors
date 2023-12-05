@@ -1,0 +1,27 @@
+.myimage
+{
+    
+    border: 1px solid;
+    width: 200px;
+    height: 240px;
+    
+}
+
+.background
+{
+    background-color:aliceblue;
+}
+
+.bg{
+    background-color:rgb(227, 236, 221);
+    border: 2px solid;
+}
+
+.border1
+{
+    border: 1px solid;
+}
+
+.blue{
+  color: blue;
+}
